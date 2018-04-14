@@ -1,32 +1,33 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] GameObject deathFX;
-    [SerializeField] float enemyDeathDelay = 0.2f;
-    int enemyHealth = 5;
+    [SerializeField] int standardEnemyHealth = 5;
+    [SerializeField] Transform parent;
+
 	// Use this for initialization
 	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		if (enemyHealth < 1)
-        {
-            deathFX.SetActive(true);
-            Invoke("KillEnemy", enemyDeathDelay);
-        }
+        Collider enemyBoxCollider = gameObject.AddComponent<BoxCollider>();
+        enemyBoxCollider.isTrigger = false;
     }
 
-    private void KillEnemy()
-    {
-        Destroy(gameObject);
+    // Update is called once per frame
+    void Update () {
+
     }
 
     private void OnParticleCollision(GameObject other)
     {
-        enemyHealth--;
+        standardEnemyHealth--;
+        if (standardEnemyHealth < 1)
+        {
+            GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
+            fx.transform.parent = parent;
+            Destroy(gameObject);
+        }
     }
+
 }
