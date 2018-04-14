@@ -5,6 +5,9 @@ using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
 
 public class PlayerController : MonoBehaviour {
+   
+    // todo see if can remove strange aspect view when ship at edges of screen
+
     [Header("General")]
     [Tooltip("In ms^-1")] [SerializeField] float ControllSpeed = 11f;
     [Tooltip("In m")] [SerializeField] float xRange = 6f;

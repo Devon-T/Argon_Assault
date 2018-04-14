@@ -316,7 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2538b5bb329de1c43817ac5f273a39e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoadDelay: 2
+  levelLoadDelay: 1
   deathFX: {fileID: 1222459059051656}
 --- !u!198 &198079159284741762
 ParticleSystem:
