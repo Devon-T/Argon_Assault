@@ -218,7 +218,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 1ecf0c055ef4b004982bda867eebdbe4, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.25
+  m_Volume: 1
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -316,8 +316,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2538b5bb329de1c43817ac5f273a39e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelLoadDelay: 1
+  levelLoadDelay: 0.5
   deathFX: {fileID: 1222459059051656}
+  collisionDisabled: 0
 --- !u!198 &198079159284741762
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -3739,7 +3740,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 437781318
+  randomSeed: 731738706
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7100,7 +7101,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1234782556
+  randomSeed: -422891440
   InitialModule:
     serializedVersion: 3
     enabled: 1

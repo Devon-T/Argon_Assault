@@ -8,10 +8,12 @@ public class CollisionHandler : MonoBehaviour {
 
     [Tooltip("In Seconds")][SerializeField] float levelLoadDelay = 2;
     [Tooltip("FX Prefab on player")] [SerializeField] GameObject deathFX;
+    [SerializeField] bool collisionDisabled = false;
 
     void OnTriggerEnter(Collider Other)
     {
-        StartDeathSequence();
+        if (collisionDisabled) { return; }
+        else {StartDeathSequence();}
     }
 
     private void StartDeathSequence()
@@ -26,5 +28,23 @@ public class CollisionHandler : MonoBehaviour {
     {
         deathFX.SetActive(false);
         SceneManager.LoadScene(1);
+    }
+
+    private void Update()
+    {
+        if (Debug.isDebugBuild)
+        {
+            debugControls();
+        }
+    }
+
+    private void debugControls()
+    {
+        if (Input.GetKeyDown(KeyCode.C) || Input.GetButton("Fire1"))
+        {
+            // todo tuen off collision
+            collisionDisabled = !collisionDisabled;
+
+        }
     }
 }
