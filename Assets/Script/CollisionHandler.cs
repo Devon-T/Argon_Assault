@@ -18,7 +18,6 @@ public class CollisionHandler : MonoBehaviour {
 
     private void StartDeathSequence()
     {
-        //deathParticle.Play();
         deathFX.SetActive(true);
         SendMessage("OnPlayerDeath");
         Invoke("RestartGame", levelLoadDelay);
