@@ -55,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1537146893992432}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0, y: -0.175, z: -0.221}
+  m_LocalPosition: {x: 0.041, y: 0.08, z: -0.008}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4990607877152018}
@@ -67,14 +67,14 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1074994750746910}
-  m_LocalRotation: {x: 0.33372366, y: -0.6234008, z: -0.33372366, w: -0.62340075}
-  m_LocalPosition: {x: 60.6, y: 28.500002, z: -127.46915}
+  m_LocalRotation: {x: 0.35516247, y: -0.5969517, z: -0.45328638, w: -0.55860525}
+  m_LocalPosition: {x: 64.1, y: 14.2, z: -134.8}
   m_LocalScale: {x: 30, y: 30, z: 30}
   m_Children:
   - {fileID: 4009956314551512}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 236.323, y: -90, z: 180}
+  m_LocalEulerAnglesHint: {x: 249.714, y: -95.797, z: 193.746}
 --- !u!23 &23098925331426018
 MeshRenderer:
   m_ObjectHideFlags: 1
@@ -183,9 +183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deathFX: {fileID: 1484650101922892, guid: 38dd3d9fa536a5e4598d8f1ecde4d66e, type: 2}
-  standardEnemyHealth: 5
   parent: {fileID: 0}
-  scorePerHit: 50
+  scorePerKill: 50
+  EnemyHealth: 20
 --- !u!135 &135161463880754416
 SphereCollider:
   m_ObjectHideFlags: 1

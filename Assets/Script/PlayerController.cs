@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour {
     [Tooltip("In ms^-1")] [SerializeField] float ControllSpeed = 11f;
     [Tooltip("In m")] [SerializeField] float xRange = 6f;
     [Tooltip("In m")] [SerializeField] float yRange = 4.5f;
+    [SerializeField] GameObject[] guns;
 
     [Header("Screen-Position Based")]
     [SerializeField] float positionPitchFactor = -5f;
@@ -38,12 +39,13 @@ public class PlayerController : MonoBehaviour {
     void Update ()
     {
         if (!controlsEnabled) { return; }
-        respondToHorizontalInput();
-        respondToVerticalInput();
-        processRotate();
+        RespondToHorizontalInput();
+        RespondToVerticalInput();
+        ProcessRotation();
+        ProcessFiring();
     }
 
-    private void processRotate()
+    private void ProcessRotation()
     {
         float pitchDueToPosition = transform.localPosition.y * positionPitchFactor;
         float pitchDueToControl = yThrow * controlPitchFactor;
@@ -55,7 +57,7 @@ public class PlayerController : MonoBehaviour {
         transform.localRotation = Quaternion.Euler(pitch, yaw, roll);
     }
 
-    private void respondToVerticalInput()
+    private void RespondToVerticalInput()
     {
         yThrow = CrossPlatformInputManager.GetAxis("Vertical");
         float yoffset = ControllSpeed * yThrow * Time.deltaTime;
@@ -65,7 +67,7 @@ public class PlayerController : MonoBehaviour {
         transform.localPosition = new Vector3(transform.localPosition.x, clampYPos, transform.localPosition.z);
     } 
 
-    private void respondToHorizontalInput()
+    private void RespondToHorizontalInput()
     {
         xThrow = CrossPlatformInputManager.GetAxis("Horizontal");
         float xoffset = ControllSpeed * xThrow * Time.deltaTime;
@@ -74,4 +76,33 @@ public class PlayerController : MonoBehaviour {
 
         transform.localPosition = new Vector3(clampXPos, transform.localPosition.y, transform.localPosition.z);
     }
+
+    void ProcessFiring()
+    {
+        if (CrossPlatformInputManager.GetButton("Fire") || CrossPlatformInputManager.GetAxis("Fire") > 0)
+        {
+            ActivateGuns();
+        }
+        else
+        {
+            DeactivateGuns();
+        }
+    }
+
+    private void ActivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(true);
+        }
+    }
+
+    private void DeactivateGuns()
+    {
+        foreach (GameObject gun in guns)
+        {
+            gun.SetActive(false);
+        }
+    }
+
 }

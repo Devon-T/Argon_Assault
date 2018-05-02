@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityStandardAssets.CrossPlatformInput;
 
 public class CollisionHandler : MonoBehaviour {
 
@@ -39,11 +40,9 @@ public class CollisionHandler : MonoBehaviour {
 
     private void debugControls()
     {
-        if (Input.GetKeyDown(KeyCode.C) || Input.GetButton("Fire1"))
+        if (Input.GetKeyDown(KeyCode.C) || CrossPlatformInputManager.GetButton("Jump")) // todo figure out why not always responding to input
         {
-            // todo tuen off collision
             collisionDisabled = !collisionDisabled;
-
         }
     }
 }

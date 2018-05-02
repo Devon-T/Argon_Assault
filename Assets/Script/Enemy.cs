@@ -5,9 +5,9 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
     [SerializeField] GameObject deathFX;
-    [SerializeField] int standardEnemyHealth = 5;
     [SerializeField] Transform parent;
-    [SerializeField] int scorePerHit = 10;
+    [SerializeField] int scorePerKill = 10;
+    [SerializeField] int EnemyHealth = 5;
 
     ScoreBoard scoreBoard;
 
@@ -31,14 +31,18 @@ public class Enemy : MonoBehaviour {
 
     private void OnParticleCollision(GameObject other)
     {
-        standardEnemyHealth--;
-        if (standardEnemyHealth < 1 && standardEnemyHealth > -1)
+        EnemyHealth--;
+        if (EnemyHealth < 1 && EnemyHealth > -1)
         {
-            scoreBoard.ScoreHit(scorePerHit);
-            GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
-            fx.transform.parent = parent;
-            Destroy(gameObject);
+            KillEnemy();
         }
     }
 
+    private void KillEnemy()
+    {
+        scoreBoard.ScoreHit(scorePerKill);
+        GameObject fx = Instantiate(deathFX, transform.position, Quaternion.identity);
+        fx.transform.parent = parent;
+        Destroy(gameObject);
+    }
 }
